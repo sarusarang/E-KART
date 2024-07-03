@@ -34,9 +34,9 @@ function Cart() {
 
       <div className='container p-5'>
 
-        <Row>
+        <Row className='mt-5 p-5'>
 
-          <Col sm={12} md={8}>
+          <Col sm={12} md={8} >
 
             <h3>Cart Summary</h3>
 
@@ -44,10 +44,9 @@ function Cart() {
 
               <thead>
 
-
                 <tr>
 
-                  <th>ID</th>
+                  
                   <th>Product name</th>
                   <th>Product image</th>
                   <th>Product price</th>
@@ -67,7 +66,7 @@ function Cart() {
 
                     <tr>
 
-                      <td>{item.id}</td>
+                      
                       <td>{item.title}</td>
                       <td><img src={item.thumbnail} height={'180px'} width={'200px'} alt="" /></td>
                       <td>{item.price}$</td>

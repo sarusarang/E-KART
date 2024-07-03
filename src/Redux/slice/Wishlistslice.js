@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "sonner";
 
 
+
+
+// WishList Function
 const Wishslice = createSlice({
 
 
@@ -17,19 +21,19 @@ const Wishslice = createSlice({
             const existingproduct = state.Wishlist.find(item => item.id == action.payload.id)
             if (existingproduct) {
 
-                alert("Product Alredy Existing In Wishlist")
+                toast.warning("Product Alredy Existing In Wishlist")
 
             } else {
 
                 state.Wishlist.push(action.payload)
-                alert("Product Added to Wishlist Success fully")
+                toast.success("Product Added to Wishlist Success fully")
 
             }
         },
         removefromwishlist: (state, action) => {
 
             state.Wishlist = state.Wishlist.filter(item => item.id != action.payload)
-            alert("PRODUCT REMOVED SUCCESS FULLY")
+            toast.success("PRODUCT REMOVED SUCCESS FULLY")
 
         }
 

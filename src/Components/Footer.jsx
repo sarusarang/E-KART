@@ -17,7 +17,7 @@ function Footer() {
 
             <div className='col-md-3 col-12 mt-3'>
 
-              <h3>Redux Cart</h3>
+              <h3>E-Kart</h3>
               <p style={{ textAlign: 'justify' }}>rem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
             </div>
 
@@ -61,7 +61,7 @@ function Footer() {
 
         <div className='mt-5'>
 
-        <h6 className='text-center'>Redux Cart 2024 &copy; All rights reserved.</h6>
+        <h6 className='text-center'>E-Kart 2024 &copy; All rights reserved.</h6>
 
         </div>
 

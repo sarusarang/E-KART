@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Profiler, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { Provider, useDispatch, useSelector } from 'react-redux'
 import { fetchproductThunk } from '../Redux/slice/ProductSlice'
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import Spinner from 'react-bootstrap/Spinner';
 import { addtoWishList } from '../Redux/slice/Wishlistslice'
 import { addTocart } from '../Redux/slice/Cartslice'
+import Carousel from 'react-bootstrap/Carousel';
 
 function Home() {
 
@@ -13,32 +14,66 @@ function Home() {
 
   const { product, loading, error } = useSelector((state) => state.productreducer)
 
+  
+  // To get the product and list it
   useEffect(() => {
 
     dispatch(fetchproductThunk())
 
 
-  }, [])
-
+  },[])
 
   return (
 
     <>
       {/* <!-- Header--> */}
 
-      <header className="bg-dark py-5">
+      <header className="bg-dark ">
 
-        <div className="container px-4 px-lg-5 my-5">
-          <div className="text-center text-white">
-            <h1 className="display-4 fw-bolder">REDUX CART</h1>
-            <p className="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-          </div>
-        </div>
+
+        <Carousel data-bs-theme="dark">
+
+          <Carousel.Item>
+
+            
+            <img
+              className="d-block w-100"
+              src="https://graphicsfamily.com/wp-content/uploads/edd/2022/06/Free-E-commerce-Product-Banner-Design-with-Green-Colors-scaled.jpg"
+              alt="First slide"
+            />
+          
+          </Carousel.Item>
+
+
+          <Carousel.Item>
+
+
+            <img
+              className="d-block w-100"
+              src="https://graphicsfamily.com/wp-content/uploads/edd/2021/07/Shop-Products-Social-Media-Banner-Design-Template-scaled.jpg"
+              alt="Second slide"
+            />
+          
+          </Carousel.Item>
+
+
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://graphicsfamily.com/wp-content/uploads/edd/2022/08/Eco-Products-Social-Media-Banner-Design-scaled.jpg"
+              alt="Third slide"
+            />
+          </Carousel.Item>
+
+
+        </Carousel>
+
 
       </header>
 
-      {/* <!-- Section--> */}
 
+
+      {/* product listing */}
       <section className="py-5">
 
         <div className="container px-4 px-lg-5 mt-5">
@@ -57,12 +92,16 @@ function Home() {
                 </>
 
                 :
+
+              
+                  
+
                 product.map(item => (
 
 
                   <div className="col mb-5">
 
-                    <div className="card text-white bg-dark mb-3">
+                    <div className="card text-white bg-dark mb-3" style={{ width: '18rem' }}>
 
                       <Link to={`/details/${item?.id}`}>
 
@@ -75,15 +114,15 @@ function Home() {
 
                         <div className="text-center">
 
-                          <h6 className="fw-bolder" style={{fontWeight:'bold'}}>{item.title}</h6>
+                          <h6 className="fw-bolder" style={{ fontWeight: 'bold' }}>{item.title}</h6>
 
                           {item?.price}₹
                         </div>
 
                         <div className='d-flex justify-content-center'>
 
-                          <button type="button" onClick={()=>{dispatch(addtoWishList(item))}} class="btn btn-outline-dark me-4"><i className="fa-solid fa-heart-circle-plus" style={{ color: '#c91313' }}></i></button>
-                          <button type="button" onClick={()=>{dispatch(addTocart(item))}} class="btn btn-outline-dark"><i className="fa-solid fa-cart-plus" style={{ color: ' #ffffff' }}></i></button>
+                          <button type="button" onClick={() => { dispatch(addtoWishList(item)) }} class="btn btn-outline-dark me-4"><i className="fa-solid fa-heart-circle-plus" style={{ color: '#c91313' }}></i></button>
+                          <button type="button" onClick={() => { dispatch(addTocart(item)) }} class="btn btn-outline-dark"><i className="fa-solid fa-cart-plus" style={{ color: ' #ffffff' }}></i></button>
 
                         </div>
 
@@ -93,7 +132,7 @@ function Home() {
 
                       <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
 
-                        <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                        <div className="text-center"><Link className='btn' to={`/details/${item?.id}`}>View Product</Link></div>
 
                       </div>
 
@@ -104,12 +143,9 @@ function Home() {
 
                 ))
 
-            }
-
-
             
 
-
+            }
 
           </div>
 

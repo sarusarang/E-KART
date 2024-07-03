@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "sonner";
 
 
+
+// Cart function
 const Cartslice = createSlice({
 
 
@@ -21,7 +24,7 @@ const Cartslice = createSlice({
 
                 state.push({...action.payload,quantity:1})
             }
-            alert("ADDED TO CART")
+            toast.success("ITEM ADDED TO CART")
 
         },
 

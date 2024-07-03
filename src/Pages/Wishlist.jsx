@@ -1,7 +1,10 @@
 import React from 'react'
 import { Row, Col, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { removefromwishlist } from '../Redux/slice/Wishlistslice'
+import { removefromwishlist, } from '../Redux/slice/Wishlistslice'
+import { addTocart } from '../Redux/slice/Cartslice'
+
+
 
 function Wishlist() {
 
@@ -17,8 +20,7 @@ function Wishlist() {
       <div className='container p-5'>
 
 
-
-        <Row>
+        <Row className='mt-5 p-5 justify-content-around'>
 
 
           {
@@ -28,9 +30,9 @@ function Wishlist() {
 
 
 
-                <Col sm={12} md={6} lg={4} xl={2}>
+                <Col sm={12} md={4} lg={4} xl={2}>
 
-                  <Card className='bg-dark'>
+                  <Card className='bg-dark p-3' style={{width:'18rem'}}>
 
                     <Card.Img height={'150px'} src={item.thumbnail}></Card.Img>
 
@@ -47,7 +49,7 @@ function Wishlist() {
 
                         </button>
 
-                        <button className='btn border'>
+                        <button className='btn border' onClick={()=>{dispatch(addTocart(item))}} >
 
                           <i className='fa-solid fa-cart-plus' style={{ color: '#4dfd0d' }}></i>
 
@@ -69,11 +71,8 @@ function Wishlist() {
 
               :
 
-              <h1>no data</h1>
+              <h1>No Products</h1>
           }
-
-
-
 
         </Row>
       </div>
